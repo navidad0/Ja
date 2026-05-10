@@ -2,41 +2,55 @@
 <html>
 <head>
 <style> 
+:root {
+  --primary-bg-color: #1e90ff;
+  --primary-color: #ffffff;
+  --box-size:50vh;
+  --ball-size:calc(2*var(--box-size))
+}
 h1 {
   color: #d00b0b;
 }
-div {
-  width: 100px;
-  height: 100px;
+.box {
   background-color: green;
-  animation-name: myAnimation;
-  animation-duration: 4s;
+  animation-name: divAnimation;
+  animation-duration: 3s;
+  animation-iteration-count:infinite;
 }
 
-p {
+ .boxparent {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    height: 100vh; /* or any height you need */
+}
+h1 {
 	text-transform: lowercase;
     animation-name:pAnimation;
     animation-duration: 3s;
+    animation-iteration-count:infinite;
+    text-align: center;
     }
 
 @keyframes pAnimation {
-	from {text-transform: lowercase;}
-    to {text-transform:uppercase;}	
+	0% {text-transform: lowercase;}
+  50% {text-transform:uppercase;}
+  100%{text-transform: lowercase;}
 }
-@keyframes myAnimation {
-  from {background-color: green;width:100px;height: 100px;border-radius: 15px;}
-  to {background-color: yellow;width:200px;height: 200px;border-radius: 100px;}
+@keyframes divAnimation {
+  0% {background-color: green;width: var(--box-size);height: var(--box-size);border-radius: 0;}
+  50% {background-color: yellow;width: var(--ball-size);height: var(--ball-size);border-radius: 50%;}
+  100% {background-color: green;width: var(--box-size);height: var(--box-size);border-radius: 0;}
 }
-</style>
+</style>  
 </head>
 <body>
 
 <h1>CSS Animation Felix ist toll</h1>
 <h1 style="color: blueviolet;">lol</h1>
 
-<div></div>
-
-<p><b>Note:</b> When an animation is finished, it goes back to its original style.</p>
+<div class="boxparent"><div class="box"></div></div>
+<p>lol</p>
 
 </body>
 </html>
